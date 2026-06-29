@@ -100,7 +100,7 @@ def main():
     w, h = p14.size
     # logo sits in the top band, roughly centered; include "Italian Grill"
     # subtitle and trim the wide side rule-bars.
-    logo = p14.crop((int(w * 0.275), int(h * 0.018), int(w * 0.725), int(h * 0.145)))
+    logo = p14.crop((int(w * 0.255), int(h * 0.018), int(w * 0.700), int(h * 0.145)))
     logo.save(os.path.join(OUT_IMG, "logo.png"))
     print("saved logo", logo.size)
 

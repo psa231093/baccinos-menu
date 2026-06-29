@@ -182,7 +182,7 @@ export const FOOD = [
   {
     id: 'pizze',
     navImage: '/img/dishes/pizze/margherita-pizza.jpg',
-    name: 'Pizze',
+    name: 'Pizza',
     emoji: '🍕',
     layout: 'cards',
     items: [
