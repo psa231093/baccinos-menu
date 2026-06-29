@@ -1,5 +1,3 @@
-import { TAGLINE } from '../data/menu'
-
 // thin hard-stop tricolore — a subtle nod to the brand, not a loud banner
 const tricolore = {
   background:
@@ -18,7 +16,7 @@ export default function Header() {
           width="744"
           height="297"
         />
-        <p className="eyebrow mt-3">{TAGLINE}</p>
+
       </div>
     </header>
   )

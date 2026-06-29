@@ -4,7 +4,7 @@ const STRIP_COUNT = 3
 
 function GridIcon() {
   return (
-    <svg viewBox="0 0 20 20" className="h-6 w-6 text-accent" fill="currentColor" aria-hidden="true">
+    <svg viewBox="0 0 20 20" className="h-6 w-6 text-green-700" fill="currentColor" aria-hidden="true">
       <rect x="2" y="2" width="7" height="7" rx="1.5" opacity="0.55" />
       <rect x="11" y="2" width="7" height="7" rx="1.5" />
       <rect x="2" y="11" width="7" height="7" rx="1.5" />
@@ -80,10 +80,10 @@ export default function CategorySquares({ categories, onJump }) {
               onClick={() => setExpanded(true)}
               className="group flex flex-1 min-w-0 flex-col items-center gap-2 focus:outline-none"
             >
-              <span className="flex aspect-square w-full items-center justify-center rounded-2xl border border-dashed border-accent/40 bg-accent-soft/60 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:border-accent/70 group-hover:bg-accent-soft group-hover:shadow-card group-active:translate-y-0">
+              <span className="flex aspect-square w-full items-center justify-center rounded-2xl border border-dashed border-green-700/40 bg-green-50/60 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:border-green-700/70 group-hover:bg-green-50 group-hover:shadow-card group-active:translate-y-0">
                 <GridIcon />
               </span>
-              <span className="text-xs font-semibold text-accent">
+              <span className="text-xs font-semibold text-green-700">
                 See all
               </span>
             </button>
