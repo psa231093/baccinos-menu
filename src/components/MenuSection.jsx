@@ -16,11 +16,11 @@ function ItemModal({ item, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-5 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-sm overflow-hidden rounded-t-3xl bg-surface animate-fade-up sm:max-w-md sm:rounded-2xl"
+        className="relative w-full max-w-sm animate-fade-up overflow-hidden rounded-2xl bg-surface"
         onClick={(e) => e.stopPropagation()}
       >
         {item.img && (
@@ -28,7 +28,7 @@ function ItemModal({ item, onClose }) {
             <img src={item.img} alt={item.name} className="h-full w-full object-cover" />
           </div>
         )}
-        <div className="p-5 pb-8 sm:pb-5">
+        <div className="p-5">
           <div className="flex items-start justify-between gap-3">
             <h2 className="font-display text-xl font-semibold leading-snug text-ink">{item.name}</h2>
             {item.price && (

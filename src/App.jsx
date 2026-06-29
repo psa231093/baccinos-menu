@@ -42,6 +42,7 @@ export default function App() {
   const [mode, setMode] = useState('food')
   const [query, setQuery] = useState('')
   const [showSlimNav, setShowSlimNav] = useState(false)
+  const showSlimNavRef = useRef(false)
   const barRef = useRef(null)
   const stripRef = useRef(null)
   const [barH, setBarH] = useState(132)
@@ -64,20 +65,31 @@ export default function App() {
     return () => ro.disconnect()
   }, [searching, showSlimNav])
 
-  // show the slim sticky pill bar once the visual browse strip scrolls past the bar
+  // show the slim sticky pill bar once the visual browse strip scrolls past the bar.
+  // rootMargin uses live barH so the threshold always matches the real bar bottom.
+  // The ref guard prevents oscillation: when barH changes after showSlimNav toggles,
+  // the IO is recreated and fires immediately — the ref stops a second state update
+  // if the value hasn't actually changed, breaking the bounce feedback loop.
   useEffect(() => {
     const el = stripRef.current
     if (!el || searching) {
+      showSlimNavRef.current = false
       setShowSlimNav(false)
       return
     }
-    const io = new IntersectionObserver(([e]) => setShowSlimNav(!e.isIntersecting), {
-      rootMargin: '-96px 0px 0px 0px',
-      threshold: 0,
-    })
+    const io = new IntersectionObserver(
+      ([e]) => {
+        const next = !e.isIntersecting
+        if (next !== showSlimNavRef.current) {
+          showSlimNavRef.current = next
+          setShowSlimNav(next)
+        }
+      },
+      { rootMargin: `-${barH}px 0px 0px 0px`, threshold: 0 },
+    )
     io.observe(el)
     return () => io.disconnect()
-  }, [searching, mode])
+  }, [searching, mode, barH])
 
   function handleMode(next) {
     if (next === mode) return
