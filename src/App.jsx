@@ -126,11 +126,15 @@ export default function App() {
             onChange={setQuery}
             placeholder={`Search ${mode === 'food' ? 'food' : 'drinks'}…`}
           />
-          {!searching && showSlimNav && (
-            <div className="animate-fade-up">
-              <CategoryNav categories={allCategories} activeId={activeId} onJump={jumpTo} />
-            </div>
-          )}
+          <div
+            className="overflow-hidden transition-all duration-300 ease-in-out"
+            style={{
+              maxHeight: !searching && showSlimNav ? '3rem' : '0px',
+              opacity: !searching && showSlimNav ? 1 : 0,
+            }}
+          >
+            <CategoryNav categories={allCategories} activeId={activeId} onJump={jumpTo} />
+          </div>
         </div>
       </div>
 
